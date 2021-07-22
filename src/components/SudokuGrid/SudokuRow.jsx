@@ -8,11 +8,13 @@ const SudokuRow = ({ firstIndex, digits, onChange }) => {
   const classes = useStyles();
 
   const handleChange = (secondIndex) => (e) => {
-    onChange({
-      firstIndex,
-      secondIndex,
-      value: e.target.value,
-    });
+    if (e.target.value >= 0 && e.target.value <= 9) {
+      onChange({
+        firstIndex,
+        secondIndex,
+        value: e.target.value,
+      });
+    }
   };
 
   return (

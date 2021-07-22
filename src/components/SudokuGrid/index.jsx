@@ -10,9 +10,13 @@ const SudokuGrid = () => {
   const handleChange = ({ firstIndex, secondIndex, value }) => {
     const _stringsArrays = stringsArrays;
 
-    _stringsArrays[firstIndex][secondIndex] = value;
-
-    setStringsArrays([..._stringsArrays]);
+    if (
+      !_stringsArrays[firstIndex].includes(value) &&
+      stringsArrays.every(item => item[0] != value)
+    ) {
+      _stringsArrays[firstIndex][secondIndex] = value;
+      setStringsArrays([..._stringsArrays]);
+    }
   };
 
   return (
